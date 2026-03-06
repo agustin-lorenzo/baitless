@@ -1,0 +1,288 @@
+{
+  "access": {
+    "embargo": {
+      "active": false,
+      "reason": null
+    },
+    "files": "public",
+    "record": "public",
+    "status": "open"
+  },
+  "created": "2020-08-01T11:44:21.994909+00:00",
+  "custom_fields": {
+    "meeting:meeting": {
+      "acronym": "SemEval",
+      "place": "Barcelona, Spain",
+      "title": "International Workshop on Semantic Evaluation",
+      "url": "http://alt.qcri.org/semeval2020/"
+    }
+  },
+  "deletion_status": {
+    "is_deleted": false,
+    "status": "P"
+  },
+  "files": {
+    "count": 1,
+    "enabled": true,
+    "entries": {
+      "datasets-v2.tgz": {
+        "access": {
+          "hidden": false
+        },
+        "checksum": "md5:a67b730067e275da627ed6753586b98e",
+        "ext": "tgz",
+        "id": "6b9474c2-8a87-42bc-a4e7-a4c8cf03ac5e",
+        "key": "datasets-v2.tgz",
+        "links": {
+          "content": "https://zenodo.org/api/records/3952415/files/datasets-v2.tgz/content",
+          "self": "https://zenodo.org/api/records/3952415/files/datasets-v2.tgz"
+        },
+        "metadata": null,
+        "mimetype": "application/gzip",
+        "size": 1142202,
+        "storage_class": "L"
+      }
+    },
+    "order": [],
+    "total_bytes": 1142202
+  },
+  "id": "3952415",
+  "is_draft": false,
+  "is_published": true,
+  "links": {
+    "access": "https://zenodo.org/api/records/3952415/access",
+    "access_grants": "https://zenodo.org/api/records/3952415/access/grants",
+    "access_links": "https://zenodo.org/api/records/3952415/access/links",
+    "access_request": "https://zenodo.org/api/records/3952415/access/request",
+    "access_users": "https://zenodo.org/api/records/3952415/access/users",
+    "archive": "https://zenodo.org/api/records/3952415/files-archive",
+    "archive_media": "https://zenodo.org/api/records/3952415/media-files-archive",
+    "communities": "https://zenodo.org/api/records/3952415/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/3952415/communities-suggestions",
+    "doi": "https://doi.org/10.5281/zenodo.3952415",
+    "draft": "https://zenodo.org/api/records/3952415/draft",
+    "file_modification": "https://zenodo.org/api/records/3952415/file-modification",
+    "files": "https://zenodo.org/api/records/3952415/files",
+    "latest": "https://zenodo.org/api/records/3952415/versions/latest",
+    "latest_html": "https://zenodo.org/records/3952415/latest",
+    "media_files": "https://zenodo.org/api/records/3952415/media-files",
+    "parent": "https://zenodo.org/api/records/3952414",
+    "parent_doi": "https://doi.org/10.5281/zenodo.3952414",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.3952414",
+    "parent_html": "https://zenodo.org/records/3952414",
+    "preview_html": "https://zenodo.org/records/3952415?preview=1",
+    "request_deletion": "https://zenodo.org/api/records/3952415/request-deletion",
+    "requests": "https://zenodo.org/api/records/3952415/requests",
+    "reserve_doi": "https://zenodo.org/api/records/3952415/draft/pids/doi",
+    "self": "https://zenodo.org/api/records/3952415",
+    "self_doi": "https://doi.org/10.5281/zenodo.3952415",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.3952415",
+    "self_html": "https://zenodo.org/records/3952415",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:3952415/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:3952415/sequence/default",
+    "versions": "https://zenodo.org/api/records/3952415/versions"
+  },
+  "media_files": {
+    "count": 0,
+    "enabled": false,
+    "entries": {},
+    "order": [],
+    "total_bytes": 0
+  },
+  "metadata": {
+    "creators": [
+      {
+        "affiliations": [
+          {
+            "name": "Qatar Computing Research Institute, HBKU"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Da San Martino",
+          "given_name": "Giovanni",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-2609-483x",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Da San Martino, Giovanni",
+          "type": "personal"
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "name": "Universit\u00e0 di Bologna"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Barr\u00f3n-Cede\u00f1o",
+          "given_name": "Alberto",
+          "identifiers": [
+            {
+              "identifier": "0000-0003-4719-3420",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Barr\u00f3n-Cede\u00f1o, Alberto",
+          "type": "personal"
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "name": "Paderborn University"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Wachsmuth",
+          "given_name": "Henning",
+          "name": "Wachsmuth, Henning",
+          "type": "personal"
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "name": "A Data Pro"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Petrov",
+          "given_name": "Rostislav",
+          "name": "Petrov, Rostislav",
+          "type": "personal"
+        }
+      },
+      {
+        "affiliations": [
+          {
+            "name": "Qatar Computing Research Institute, HBKU"
+          }
+        ],
+        "person_or_org": {
+          "family_name": "Nakov",
+          "given_name": "Preslav",
+          "identifiers": [
+            {
+              "identifier": "0000-0002-3600-1510",
+              "scheme": "orcid"
+            }
+          ],
+          "name": "Nakov, Preslav",
+          "type": "personal"
+        }
+      }
+    ],
+    "description": "<p>This dataset contains the files and annotations for <a href=\"https://propaganda.qcri.org/semeval2020-task11/index.html\">SemEval-2020 Task 11: Detection of Propaganda Techniques in News Articles</a>. The task was composed by two subtasks: span identification (SI) and technique classification (TC). This dataset includes the following:</p>\n\n<ul>\n\t<li>The text files for training, development, and testing sets for both the SI and the TC tasks.</li>\n\t<li>The gold-standard files for the training sets, for both the SI and the TC task</li>\n</ul>\n\n<p>Our propaganda identification initiative remains active. We keep a <a href=\"https://propaganda.qcri.org/ptc/leaderboard.php\">live leader-board</a> reporting the performance of models submited up to date.</p>\n\n<p><strong>Reference</strong></p>\n\n<p>Giovanni Da San Martino, Alberto Barr&oacute;n-Cede&ntilde;o, Henning Wachsmuth, Rostislav Petrov, and Preslav Nakov. 2020. <a href=\"https://propaganda.qcri.org/\">Task 11: Detection of Propaganda Techniques in News Articles</a>. In Proceedings of the 14th International Workshop on Semantic Evaluation (SemEval 2020). Barcelona, Spain (2020)</p>\n\n<p>&nbsp;</p>\n\n<pre><code>@InProceedings{SemEval20-11-DaSanMartino,\nauthor = \"Da San Martino, Giovanni and\n  Barr\\'{o}n-Cede\\~no, Alberto and\n  Wachsmuth, Henning and\n  Petrov, Rostislav and\n  Nakov, Preslav\",\n title = \"{SemEval}-2020 Task 11: {D}etection of Propaganda Techniques in News \nArticles\",\n pages = \"\",\n abstract = \"We describe the outcome of the SemEval 2020 Task 11 on the \n\tdetection of propaganda in news articles. We present two tasks. In the \n\tfirst task, systems are asked to identify specific text spans in a free \n\ttext where propaganda is being applied. In the second task, systems are \n\tasked to identify the propaganda technique being applied in a text span. We \n\tdescribe the construction of the evaluation framework (dataset and \n\tevaluation metrics) as well as the approaches explored by the different \n\tparticipants. \",\ncrossref = \"SemEval20\"\n}</code></pre>\n\n<p>&nbsp;</p>",
+    "languages": [
+      {
+        "id": "eng",
+        "title": {
+          "en": "English"
+        }
+      }
+    ],
+    "publication_date": "2020-08-01",
+    "publisher": "Zenodo",
+    "references": [
+      {
+        "reference": "Giovanni Da San Martino, Alberto Barr\u00f3n-Cede\u00f1o, Henning Wachsmuth, Rostislav Petrov, and Preslav Nakov. 2020. Task 11: Detection of Propaganda Techniques in News Articles. In Proceedings of the 14th International Workshop on Semantic Evaluation (SemEval 2020). Barcelona, Spain (2020)"
+      }
+    ],
+    "resource_type": {
+      "id": "dataset",
+      "title": {
+        "de": "Datensatz",
+        "en": "Dataset"
+      }
+    },
+    "rights": [
+      {
+        "description": {
+          "en": "The Creative Commons Attribution license allows re-distribution and re-use of a licensed work on the condition that the creator is appropriately credited."
+        },
+        "icon": "cc-by-icon",
+        "id": "cc-by-4.0",
+        "props": {
+          "scheme": "spdx",
+          "url": "https://creativecommons.org/licenses/by/4.0/legalcode"
+        },
+        "title": {
+          "en": "Creative Commons Attribution 4.0 International"
+        }
+      }
+    ],
+    "subjects": [
+      {
+        "subject": "propaganda identification"
+      },
+      {
+        "subject": "propaganda techniques"
+      },
+      {
+        "subject": "fine-grained analysis"
+      },
+      {
+        "subject": "logical falacies"
+      },
+      {
+        "subject": "emotion and sentiment mechanisms"
+      }
+    ],
+    "title": "SemEval-2020 Task 11: Detection of Propaganda Techniques in News Articles",
+    "version": "SemEval-2020"
+  },
+  "parent": {
+    "access": {
+      "owned_by": {
+        "user": "58173"
+      }
+    },
+    "communities": {},
+    "id": "3952414",
+    "pids": {
+      "doi": {
+        "client": "datacite",
+        "identifier": "10.5281/zenodo.3952414",
+        "provider": "datacite"
+      }
+    }
+  },
+  "pids": {
+    "doi": {
+      "client": "datacite",
+      "identifier": "10.5281/zenodo.3952415",
+      "provider": "datacite"
+    },
+    "oai": {
+      "identifier": "oai:zenodo.org:3952415",
+      "provider": "oai"
+    }
+  },
+  "revision_id": 4,
+  "stats": {
+    "all_versions": {
+      "data_volume": 679610190.0,
+      "downloads": 595,
+      "unique_downloads": 556,
+      "unique_views": 1947,
+      "views": 2111
+    },
+    "this_version": {
+      "data_volume": 679610190.0,
+      "downloads": 595,
+      "unique_downloads": 556,
+      "unique_views": 1943,
+      "views": 2107
+    }
+  },
+  "status": "published",
+  "swh": {},
+  "updated": "2020-08-14T16:25:53.107219+00:00",
+  "versions": {
+    "index": 1,
+    "is_latest": true
+  }
+}
