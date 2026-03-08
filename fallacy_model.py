@@ -15,7 +15,7 @@ df['labels'] = binarizer.fit_transform(df['labels']).astype(float).tolist()
 tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
 def tokenize(examples):
     return tokenizer(examples['text'], truncation=True)
-dataset = Dataset.from_pandas(df).map(tokenize, batched=True).train_test_split(test_size=0.1, shuffle=True)
+dataset = Dataset.from_pandas(df).map(tokenize, batched=True)#.train_test_split(test_size=0.1, shuffle=True)
 
 # Initalize model
 id2label = {i: label for i, label in enumerate(binarizer.classes_)}
@@ -44,26 +44,30 @@ training_args = TrainingArguments(
     output_dir='models/fallacy-checkpoints',
     learning_rate=2e-5,
     lr_scheduler_type='cosine',
-    num_train_epochs=25,
+    num_train_epochs=15,
     weight_decay=0.01,
     optim='adamw_torch',
-    eval_strategy='epoch',
-    save_strategy='epoch',
+    #eval_strategy='epoch',
+    #save_strategy='epoch',
     logging_steps=100,
-    load_best_model_at_end=True,
+    #load_best_model_at_end=True,
     metric_for_best_model='f1'
 )
 
 trainer = Trainer(
     model = model,
     args=training_args,
-    train_dataset=dataset['train'],
-    eval_dataset=dataset['test'],
+    train_dataset=dataset,
+    #train_dataset=dataset['train'],
+    #eval_dataset=dataset['test'],
     data_collator=DataCollatorWithPadding(tokenizer),
-    compute_metrics=compute_metrics,    
-    callbacks=[EarlyStoppingCallback(early_stopping_patience=5)]
+    #compute_metrics=compute_metrics,    
+    #callbacks=[EarlyStoppingCallback(early_stopping_patience=5)]
 )
 
-# Train and save the model
+# Train and save the model, push to hub
 trainer.train()
-trainer.save_model('model/fallacy-model')
+trainer.save_model('models/fallacy-model')
+
+model.push_to_hub('agustin-lorenzo/fallacy-classifier')
+tokenizer.push_to_hub('agustin-lorenzo/fallacy-classifier')
