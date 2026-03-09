@@ -8,13 +8,15 @@ from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_sc
 from transformers import DistilBertForSequenceClassification, DistilBertTokenizer, TrainingArguments, Trainer, EarlyStoppingCallback, DataCollatorWithPadding
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-df = pd.read_csv('datasets/fallacy_binaries.csv')
 
+# Read and tokenize dataset
+df = pd.read_csv('datasets/fallacy_binaries.csv')
 tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
 def tokenize(examples):
     return tokenizer(examples['text'], truncation=True)
-dataset = Dataset.from_pandas(df).map(tokenize, batched=True).train_test_split(test_size=0.1, shuffle=True)
+dataset = Dataset.from_pandas(df).map(tokenize, batched=True)#.train_test_split(test_size=0.1, shuffle=True)
 
+# Initalize model
 model = DistilBertForSequenceClassification.from_pretrained('distilbert-base-uncased', num_labels=2)
 
 metric = evaluate.load('accuracy')
@@ -34,27 +36,31 @@ training_args = TrainingArguments(
     learning_rate=2e-5,
     lr_scheduler_type='cosine',
     warmup_ratio=0.1,
-    num_train_epochs=20,
+    num_train_epochs=15,
     weight_decay=0.02,
     optim='adamw_torch',
-    eval_strategy='epoch',
-    save_strategy='epoch',
+    #eval_strategy='epoch',
+    #save_strategy='epoch',
     save_total_limit=2,
-    logging_steps=20,
-    load_best_model_at_end=True,
+    logging_steps=100,
+    #load_best_model_at_end=True,
     metric_for_best_model='accuracy'
 )
 
 trainer = Trainer(
     model = model,
     args=training_args,
-    train_dataset=dataset['train'],
-    eval_dataset=dataset['test'],
+    train_dataset=dataset,
+    #train_dataset=dataset['train'],
+    #eval_dataset=dataset['test'],
     data_collator=DataCollatorWithPadding(tokenizer),
-    compute_metrics=compute_metrics,    
-    callbacks=[EarlyStoppingCallback(early_stopping_patience=5)]
+    #compute_metrics=compute_metrics,    
+    #callbacks=[EarlyStoppingCallback(early_stopping_patience=5)]
 )
 
 # Train and save the model, push to hub
 trainer.train()
 trainer.save_model('models/f-binary_db-model')
+
+model.push_to_hub('agustin-lorenzo/fallacy-detector_db')
+tokenizer.push_to_hub('agustin-lorenzo/fallacy-detector_db')

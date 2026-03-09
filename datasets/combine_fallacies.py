@@ -2,12 +2,26 @@ import pandas as pd
 import json
 from rich import print
 
-plabel2label = {'Black-and-White_Fallacy': 'false dilemma',
-                'Whataboutism': 'appeal to worse problems',
-                'Bandwagon': 'appeal to majority',
+plabel2label = {'Name_Calling,Labeling': 'ad hominem',
+                'Whataboutism,Straw_Men,Red_Herring': 'appeal to worse problems',
+                'Bandwagon,Reductio_ad_Hitlerum': 'appeal to majority',
+                'Exaggeration,Minimisation': 'exaggeration',  # British spelling
+                'Black-and-White_Fallacy': 'false dilemma',
                 'Causal_Oversimplification': 'slippery slope',
                 'Appeal_to_Authority': 'appeal to authority',
-                'Name_Calling': 'ad hominem'}
+                'Flag-Waving': 'flag waving',
+                'Appeal_to_fear-prejudice': 'appeal to fear prejudice',
+                'Thought-terminating_Cliches': 'thought terminating cliches',
+                'Reductio_ad_hitlerum': 'appeal to majority',
+                'Bandwagon': 'appeal to majority',
+                'Loaded_Language': 'loaded language',
+                'Repetition': 'repetition',
+                'Doubt': 'doubt',
+                'Slogans': 'slogans',
+                'Straw_Men': 'appeal to worse problems',
+                'Red_Herring': 'appeal to worse problems',
+                'Whataboutism': 'appeal to worse problems',
+                }
 tlabel2jlabel = {'slippery_slope': 'slippery slope',
                  'population': 'appeal to majority',
                  'authority': 'appeal to authority',
@@ -38,13 +52,13 @@ for index, row in prop_df.iterrows():
     if index == 0 or article_num != prev_num:
         with open(f"propaganda/train-articles/article{article_num}.txt", 'r') as f:
             article = f.read()
-        prev_num = article_num
+            prev_num = article_num
 
     text = article[start:end]
-    labels = labels.split(',')
-    for i, l in enumerate(labels):
-        labels[i] = plabel2label[l] if l in plabel2label else l
-        labels[i] = labels[i].lower().replace('-', ' ').replace('_', ' ')
+    if labels in plabel2label:
+        labels = [plabel2label[labels]]
+    else:
+        labels = [plabel2label.get(l, l.lower().replace('-', ' ').replace('_', ' ')) for l in labels.split(',')]
 
     print(f"[bold yellow]{text=},  [red]{labels=}")
     #print(f"{text=},  {labels=}")
@@ -75,7 +89,7 @@ for index, row in txt_df.iterrows():
             words[i][0] not in punc
             and i > 0 and words[i-1] != ('\'' or "\"")):
             comment += " "
-        comment += words[i]
+            comment += words[i]
 
     if comment:
         print(f"[bold yellow]{comment} \n [red]{current_label.upper()} \n")
