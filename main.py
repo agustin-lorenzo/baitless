@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from transformers import pipeline
 
 binary_pipe = pipeline('text-classification', model='models/f-binary_db-model')
-class_pipe = pipeline('text-classification', model='models/f-class_model')
+class_pipe = pipeline('text-classification', model='models/f-class_model', top_k=3)
 
 app = FastAPI()
 
@@ -15,8 +15,9 @@ class Inputs(BaseModel):
 def predict_fallacy(inputs: Inputs):
     binary_pred = binary_pipe(inputs.text)
     class_pred = class_pipe(inputs.text)
-    return {'detected': binary_pred,
-            'class': class_pred}
+    top3 = sorted(class_pred[0], key=lambda x: x['score'], reverse=True)[:3]
+    return {'detected': binary_pred[0]['label'],
+            'top_predictions': top3}
 
 @app.get('/')
 def read_root():
