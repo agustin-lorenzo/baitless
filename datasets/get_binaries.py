@@ -1,6 +1,8 @@
 import pandas as pd
 import json
+import re
 from rich import print
+
 
 plabel2label = {'Black-and-White_Fallacy': 'false dilemma',
                 'Whataboutism': 'appeal to worse problems',
@@ -44,7 +46,8 @@ for index, row in prop_df.iterrows():
         with open(f"propaganda/train-articles/article{article_num}.txt", 'r') as f:
             article = f.read()
         if non_prop_str:
-            np_sentences = non_prop_str.split('. ')
+            non_prop_str.replace('\n', '#$%').replace('. ', '@#$')
+            np_sentences = non_prop_str.split('@#$')
             for s in np_sentences:
                 if s and s != '\n':
                     all_data.append([s.strip(), 0])
@@ -132,6 +135,6 @@ print(f"\n\n{all_df['labels'].explode().value_counts()}")
 print(f"==> total: {len(all_data)}")
 
 # Save as .csv file
-path = 'fallacy_binaries.csv'
+path = 'test_fallacy_binaries.csv'
 all_df.to_csv(path)
 print(f"dataset saved to {path}.")
