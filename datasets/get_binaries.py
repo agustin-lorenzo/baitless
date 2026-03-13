@@ -2,6 +2,11 @@ import pandas as pd
 import json
 import re
 from rich import print
+import nltk
+from nltk.tokenize import sent_tokenize
+
+nltk.download('punkt')
+nltk.download('punkt_tab')
 
 
 plabel2label = {'Black-and-White_Fallacy': 'false dilemma',
@@ -46,13 +51,21 @@ for index, row in prop_df.iterrows():
         with open(f"propaganda/train-articles/article{article_num}.txt", 'r') as f:
             article = f.read()
         if non_prop_str:
-            non_prop_str.replace('\n', '#$%').replace('. ', '@#$')
-            np_sentences = non_prop_str.split('@#$')
+            np_sentences = sent_tokenize(non_prop_str)
             for s in np_sentences:
+                s = s.strip()
                 if s and s != '\n':
-                    all_data.append([s.strip(), 0])
-                    print(f"{s.strip()}")
+                    all_data.append([s, 0])
+                    print(f"NON-PROP TEXT:\n{s}\n")
+                
+            #non_prop_str.replace('\n', '#$%').replace('. ', '@#$')
+            #np_sentences = non_prop_str.split('@#$')
+            # for s in np_sentences:
+            #     if s and s != '\n':
+            #         all_data.append([s.strip(), 0])
+            #         print(f"{s.strip()}")
         non_prop_str = ""
+        np_curr = 0
         prev_num = article_num
 
     # Add propaganda segment from current line
