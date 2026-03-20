@@ -148,6 +148,6 @@ print(f"\n\n{all_df['labels'].explode().value_counts()}")
 print(f"==> total: {len(all_data)}")
 
 # Save as .csv file
-path = 'test_fallacy_binaries.csv'
+path = 'fallacy_binaries.csv'
 all_df.to_csv(path)
 print(f"dataset saved to {path}.")
