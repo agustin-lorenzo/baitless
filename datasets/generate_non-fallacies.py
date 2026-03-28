@@ -11,22 +11,6 @@ I wan't you to just IMMEDIATELY provide your answer, without any statements befo
 The sentence with the fallacy to remove is as follows:
 """
 
-# df = pd.read_csv('all_fallacies.csv')
-# for i, row in df.iterrows():
-#     full_prompt = prompt + row['text']
-#     full_prompt += f"\nThe fallacy(s) to remove is: {row['labels']}"
-#     full_prompt += "\nPlease provide the sentence without the fallacy now."
-
-
-#     response: ChatResponse = chat(model='gemma3:4b', messages=[
-#         {
-#             'role': 'user',
-#             'content': full_prompt
-#         },
-#     ])
-#     print(response.message.content)
-#     print()
-
 def generate_non_fallacy(args):
     i, row = args
     full_prompt = prompt + row['text']
