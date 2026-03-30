@@ -12,19 +12,19 @@ The **baitless** project is an attempt to "filter out the noise" and reduce the 
 
 1. *Logical fallacies*
 
-This can be done by training models on publically available datasets that contain various types of fallacies
+> This can be done by training models on publically available datasets that contain various types of fallacies
 
 2. *Propaganda*
 
-As far as I am aware, there aren't any public datasets that contain explicit examples of propaganda. This may be detected in conjunction with fallacies - i.e. a logical fallacy in combination with nationalistic language could be an indicator of propaganda.
+> As far as I am aware, there aren't any public datasets that contain explicit examples of propaganda. This may be detected in conjunction with fallacies - i.e. a logical fallacy in combination with nationalistic language could be an indicator of propaganda.
 
 3. *Informal "ragebait" from everyday users*
 
-This will likely require gathering data from social media websites (e.g. Reddit or X) through webscrapping. The informal nature of the content will make it difficult to define the criteria for a post to be considered "ragebait," but they may be selected by level of controvery, number of likes vs. engagement, etc.
+> This will likely require gathering data from social media websites (e.g. Reddit or X) through webscrapping. The informal nature of the content will make it difficult to define the criteria for a post to be considered "ragebait," but they may be selected by level of controvery, number of likes vs. engagement, etc.
 
 4. *AI-generated text and videos*
 
-It's unclear whether new models will be needed for this, since many people are already working on methods for detection AI-generated content. If performance is adequate, open source models should get the job done. Otherwise, models can be either be trained on public datasets, or on my own synthetic data.
+> It's unclear whether new models will be needed for this, since many people are already working on methods for detection AI-generated content. If performance is adequate, open source models should get the job done. Otherwise, models can be either be trained on public datasets, or on my own synthetic data.
 
 ### Implementation/End Goal
 
