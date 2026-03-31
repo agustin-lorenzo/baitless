@@ -11,7 +11,7 @@ while True:
     inputs = input("\n\nInput text to check for fallacies: ")
     console = Console()
     console.rule()
-
+    
     b_result = binary(inputs)
     c_result = classes(inputs)
     
@@ -21,3 +21,4 @@ while True:
     for f in c_result[0]:
         prefix = "[bold magenta]"if f['score'] >= 0.5 else "[grey]"
         print(f"\t{prefix}{f['label']} [white](score: [cyan]{f['score']:.2f}[/cyan])")
+

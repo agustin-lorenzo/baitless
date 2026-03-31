@@ -4,14 +4,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix
 
-data = pd.read_csv('datasets/fallacy_binaries.csv', encoding='latin-1')
+data = pd.read_csv('datasets/all_binaries.csv', encoding='latin-1')
 vectorizer = CountVectorizer()
 X = vectorizer.fit_transform(data['text'])
 y = data['labels']
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
 
-model = LogisticRegression(random_state=42)
+model = LogisticRegression(random_state=42, verbose=1, max_iter=200000)
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)

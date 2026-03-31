@@ -11,8 +11,11 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
 # Encode labels with multi-label binarizer and tokenize dataset
-df = pd.read_csv('datasets/all_fallacies.csv')
+df = pd.read_csv('datasets/all_fallacies.csv', on_bad_lines='skip')
 df['labels'] = df['labels'].apply(ast.literal_eval)
+print(df)
+print(df['labels'].explode().value_counts())
+print(f"total: {len(df)}")
 binarizer = MultiLabelBinarizer()
 df['labels'] = binarizer.fit_transform(df['labels']).astype(float).tolist()
 tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
@@ -46,7 +49,7 @@ def compute_metrics(eval_pred):
 
 # Set training arguments
 training_args = TrainingArguments(
-    output_dir='models/fallacy-checkpoints',
+    output_dir='models/f-class_checkpoints',
     learning_rate=4e-5,
     lr_scheduler_type='cosine',
     warmup_ratio=0.1,
@@ -54,15 +57,15 @@ training_args = TrainingArguments(
     weight_decay=0.005,
     optim='adamw_torch',
     #eval_strategy='epoch',
-    #save_strategy='epoch',
+    save_strategy='epoch',
     save_total_limit=2,
     logging_steps=100,
     #load_best_model_at_end=True,
-    metric_for_best_model='f1'
+    #metric_for_best_model='f1'
 )
 
 trainer = Trainer(
-    model = model,
+    model=model,
     args=training_args,
     train_dataset=dataset,
     #train_dataset=dataset['train'],

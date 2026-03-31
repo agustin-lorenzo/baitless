@@ -10,11 +10,14 @@ from transformers import DistilBertForSequenceClassification, DistilBertTokenize
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Read and tokenize dataset
-df = pd.read_csv('datasets/test_fallacy_binaries.csv')
+df = pd.read_csv('datasets/all_binaries.csv')
+print(df)
+print(df['labels'].value_counts())
+print(f"total: {len(df)}")
 tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
 def tokenize(examples):
     return tokenizer(examples['text'], truncation=True)
-dataset = Dataset.from_pandas(df).map(tokenize, batched=True).train_test_split(test_size=0.1, shuffle=True)
+dataset = Dataset.from_pandas(df).map(tokenize, batched=True)#.train_test_split(test_size=0.1, shuffle=True)
 
 # Initalize model
 model = DistilBertForSequenceClassification.from_pretrained('distilbert-base-uncased', num_labels=2)
@@ -35,31 +38,31 @@ training_args = TrainingArguments(
     learning_rate=3e-5,
     lr_scheduler_type='cosine',
     warmup_ratio=0.1,
-    num_train_epochs=15,
+    num_train_epochs=10,
     weight_decay=0.01,
     optim='adamw_torch',
-    eval_strategy='epoch',
+    #eval_strategy='epoch',
     save_strategy='epoch',
     save_total_limit=2,
     logging_steps=100,
-    load_best_model_at_end=True,
-    metric_for_best_model='recall'
+    #load_best_model_at_end=True,
+    #metric_for_best_model='recall'
 )
 
 trainer = Trainer(
-    model = model,
+    model=model,
     args=training_args,
-    #train_dataset=dataset,
-    train_dataset=dataset['train'],
-    eval_dataset=dataset['test'],
+    train_dataset=dataset,
+    #train_dataset=dataset['train'],
+    #eval_dataset=dataset['test'],
     data_collator=DataCollatorWithPadding(tokenizer),
     compute_metrics=compute_metrics,    
-    callbacks=[EarlyStoppingCallback(early_stopping_patience=5)]
+    #callbacks=[EarlyStoppingCallback(early_stopping_patience=5)]
 )
 
 # Train and save the model, push to hub
 trainer.train()
 trainer.save_model('models/f-binary_db-model')
 
-#model.push_to_hub('agustin-lorenzo/fallacy-detector_db')
-#tokenizer.push_to_hub('agustin-lorenzo/fallacy-detector_db')
+model.push_to_hub('agustin-lorenzo/fallacy-detector_db')
+tokenizer.push_to_hub('agustin-lorenzo/fallacy-detector_db')
