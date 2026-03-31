@@ -36,7 +36,7 @@ There is also potential for use through an API - while the general public can us
 
 ---
 
-## Progress
+# Progress
 
 ### 3/29/2026
 So far, two models have been trained: a `fallacy detector` and a `fallacy classifier`. Both can be used on this [HuggingFace Space](https://huggingface.co/spaces/agustin-lorenzo/fallacy-detector). The outputs of the models are formatted like this:
