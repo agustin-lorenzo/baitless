@@ -28,9 +28,7 @@ The **baitless** project is an attempt to "filter out the noise" and reduce the 
 
 ### Implementation/End Goal
 
-Once these methods for detecting the **bait** are developed, they can be filtered out through an application. In practice, this will probably look like a Chrome extension; here, the user could set thresholds for how confident the models must be content to be considered **bait**, or determine whether the **bait** should be higlighted or removed entirely (similar to adblock extensions).
-
-There is also potential for use through an API - while the general public can use the extension, an API could be utilized to process large amounts of data.
+Once these methods for detecting the **bait** are developed, they can be filtered out through an application. In practice, this will probably look like a Chrome extension; here, the user could set thresholds for how confident the models must be for content to be considered **bait**, or determine whether the **bait** should be higlighted or removed entirely (similar to adblock extensions). There is also potential for use through an API - while the general public can use the extension, an API could be utilized to process large amounts of data.
 
 *Ideally, this project would serve as a way for sites to effectively reduce the amount of **bait** by detecting it before/soon after it's posted.*
 
