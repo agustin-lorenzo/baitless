@@ -39,7 +39,37 @@ There is also potential for use through an API - while the general public can us
 ## Progress
 
 ### 3/29/2026
-So far, two models have been trained: a `fallacy detector` and a `fallacy classifier`
+So far, two models have been trained: a `fallacy detector` and a `fallacy classifier`. Both can be used on this [HuggingFace Space](https://huggingface.co/spaces/agustin-lorenzo/fallacy-detector). The outputs of the models are formatted like this:
+
+```
+Detected: NO FALLACY DETECTED <-- Output from binary detector
+Most likely fallacies:        <-- Output from multilabel classifier
+	repetition: 0.217
+	thought terminating cliches: 0.042
+	slogans: 0.001
+```
+
+The output of the eventual API should be something similar:
+
+```
+{
+  "detected": "LABEL_0",
+  "top_predictions": [
+    {
+      "label": "repetition",
+      "score": 0.38368114829063416
+    },
+    {
+      "label": "thought terminating cliches",
+      "score": 0.19421550631523132
+    },
+    {
+      "label": "exaggeration",
+      "score": 0.00010815222776727751
+    }
+  ]
+}
+```
 
 > Why not just one model?
 
