@@ -2,11 +2,13 @@ from rich import print
 from rich.console import Console
 from rich.traceback import install
 from transformers import pipeline
+import os
 install()
 
-binary = pipeline('text-classification', model='models/f-binary_db-model')
-classes = pipeline('text-classification', model='models/f-class_model', top_k=3)
+binary = pipeline('text-classification', model='agustin-lorenzo/fallacy-detector_db')
+classes = pipeline('text-classification', model='agustin-lorenzo/fallacy-classifier', top_k=3)
 
+os.system('clear')
 while True:
     inputs = input("\n\nInput text to check for fallacies: ")
     console = Console()
