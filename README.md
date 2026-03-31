@@ -71,7 +71,7 @@ The output of the eventual API should be something similar:
 
 > #### Why not just one model?
 
-With the end goal of something like a Chrome extension in mind, it would be very computationally expensive to run a multilabel classifier for every string of text that's on a webpage. So, the `fallacy detector` would act as a gate that determines whether it's worth calling the `fallacy classifier` on a given text. Currently, both models were finetuned DistilBERT models so I could gage a baseline for performance. In the near future however, I plan to significantly reduce the size/complexity of the detector model. This could be done through either quanitizing or pruning the current model, or just by training another smaller model entirely (i.e. something like an LSTM - very small, but still appropriate for sequential data like natural language text).
+With the end goal of something like a Chrome extension in mind, it would be very computationally expensive to run a multilabel classifier for every string of text that's on a webpage. So, the `fallacy detector` would act as a gate that determines whether it's worth calling the `fallacy classifier` on a given text. I decided to use finetuned DistilBERT models for both initally so I could first gage a baseline for performance. In the near future however, I plan to significantly reduce the size/complexity of the detector model. This could be done through either quanitizing or pruning the current model, or just by training another smaller model entirely (i.e. something like an LSTM - very small, but still appropriate for sequential data like natural language text).
 
 ###### *Classification metrics for both models are comming soon! This section will be updated as soon as they are appropriately evaluated.*
 
